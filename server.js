@@ -4,14 +4,15 @@ const bodyParser = require('body-parser');
 const cors = require('cors'); 
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000; // Use environment variable or default to 3000
 
-
+// Database connection
 const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'Owaish',
-    password: '@Owaish31',
-    database: 'students_db' 
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    port: process.env.DB_PORT || 3306 // Default MySQL port
 });
 
 db.connect(err => {
@@ -22,11 +23,9 @@ db.connect(err => {
     console.log('Connected to database');
 });
 
-
 app.use(cors()); 
 app.use(express.static('public')); 
 app.use(bodyParser.json()); 
-
 
 app.post('/submit', (req, res) => {
     const { name, contact, qualification } = req.body;
@@ -40,7 +39,6 @@ app.post('/submit', (req, res) => {
         res.status(200).json({ message: 'Data inserted successfully' });
     });
 });
-
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
