@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Jod Application</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <img src="logo.png" alt="Student Image" class="image">
+        <h1>Student Jod</h1>
+        <form id="studentForm">
+            <div class="input-group">
+                <label for="name"><b>Enter your Name</b></label>
+                <input type="text" id="name" name="name" pattern="[A-Za-z\s]+" title="Only letters are allowed." required>
+            </div>
+            <div class="input-group">
+                <label for="contact"><b>Enter Contact number</b></label>
+                <input type="text" id="contact" name="contact" maxlength="10" pattern="\d{10}" title="Please enter a 10-digit number." required>
+            </div>
+            <div class="input-group">
+                <label for="qualification"><b>Qualification</b></label>
+                <input type="text" id="qualification" name="qualification" required>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
